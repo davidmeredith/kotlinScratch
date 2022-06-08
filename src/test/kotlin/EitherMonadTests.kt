@@ -3,6 +3,37 @@ import org.junit.jupiter.api.Test
 
 internal class EitherMonadTests {
 
+    /*
+     - Monad is a concept, a functional pattern.
+     - Monads can be implemented in any statically typed language that supports generics.
+     - Implemented as classes that encapsulate a ‘context’ that wraps a parameterized input type (eg R1) and
+       which declares higher-order functions to transform the value of the wrapped type.
+     - Technically, a Monad implements:
+         * A higher order bind function: flatmap()  (and optionally map())
+         * A unit function:  of()
+         * Obeys the laws of Right and Left associativity
+     - unit() function creates a Monad by wrapping the parameterized type
+     - flatMap/map allows passing a ‘mapper’ function to our wrapped type in order to transform the wrapped val.
+     - flatMap/map allows call chaining – you can repeatedly apply multiple ‘mapper’ functions in order to
+       successively transform results in a pipeline.
+     - Transformation in a pipeline successively creates new Monads and the type of the wrapped param can change,
+       eg from R1 to R2.
+     - Important: flatMap/map won't call the mapper function if its parameterised input value is null/empty
+       (eg Either’s error implementation is an instance of Left, which uses Nothing for the input type)
+     - A null/empty input value aborts the call chain - subsequent mappers in the chain can simply shortcut
+       and return the error-Monad unchanged. Alternatively, the Monad could create a new error monad in order to
+       update the stack trace for example.
+     - The end-result of a long call chain will be our transformed parameter result with the type specified
+       by the last Monad in the chain, eg for the Either Monad, this is an instance of Right for success OR
+       Left for error.
+
+       When to use map, when to use flatMap ?
+       The need to return a new wrapping Monad (map) or flatten/unwrap (flatMap) depends on the
+       passed mapper function:
+        - If the mapper fn you want to pass specifies  `A -> B` apply map
+        - If the mapper fn you want to pass specifies `A -> SomeMonad of B` apply flatmap
+
+     */
     @Test
     fun `assert Left identity`(){
         // If we create a new monad and call its bind function, the result should be the same as
