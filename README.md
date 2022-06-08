@@ -1,5 +1,5 @@
 
-Not a project, but a scratch area for experimenting with Kotlin such as:
+Not a project, but a scratch area for experimenting with Kotlin including:
 * Functional composition with Monads (eg sample Either Monad)
 * sealed classes
 
