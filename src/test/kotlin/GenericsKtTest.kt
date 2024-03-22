@@ -12,6 +12,7 @@ internal class GenericsKtTest {
         assertTrue(dogConsumer is InConsumer<Dog>)
         assertTrue(catConsumer is InConsumer<Cat>)
 
+
         dogConsumer.consume(Dog())
         catConsumer.consume(Cat())
         // prints:
