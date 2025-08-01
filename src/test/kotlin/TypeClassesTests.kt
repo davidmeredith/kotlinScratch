@@ -42,6 +42,7 @@ internal class TypeClassesTests {
         val expected = "Summary is: Tweet: my tweet Retweet: my retweet, Info: Default Information"
         with(tweetSummaryScope) {
             with(anyFarewellScope) {
+                assertEquals("Tat ta", tweet.sayBye())
                 assertEquals(expected, globalFuncWithSingleContext(tweet))
                 assertEquals("$expected Bye: Tat ta", globalFuncWithMultipleContexts(tweet, "Bye: "))
             }

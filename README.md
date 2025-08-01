@@ -5,7 +5,7 @@ Not a project, but a scratch area for experimenting with Kotlin including:
 
 ## Prerequisites
 
-Java 17+
+Java 23+
 
 ## Run tests
 

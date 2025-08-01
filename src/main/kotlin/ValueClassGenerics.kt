@@ -20,7 +20,7 @@ fun startVehicleEngine(vehicle: Vehicle){
     }
 }
 
-// hasEngine in a value class, hence it will be more performant, especially with Valhallla
+// hasEngine is a value class, hence it will be more performant, especially with Valhallla
 fun startVehicleEngine(hasEngine : HasEngine<Vehicle>) {
     when(val vehicle = hasEngine.engineRelated){
         is Car -> println("Starting Car with [${vehicle.wheels}] wheels")
